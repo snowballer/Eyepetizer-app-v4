@@ -66,6 +66,22 @@ export default function (props) {
 }
 ```
 
+**Router history**：如果采用hashhistory，路径匹配时会多出/#/部分，为了url的纯净优雅，采用了BrowserHistory，但同时发现路由会出现匹配不到页面时跳转到首页的问题，因此在路由中增加了其他路径匹配NotFound组件
+
+```javascript
+import createHistory from 'history/createBrowserHistory'
+export const history = createHistory();
+const routeconfig =(
+  <ConnectedRouter history={history}>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/detail/:id" component={Detail}></Route>
+      <Route component={NotFound}></Route>
+    </Switch>
+  </ConnectedRouter>
+);
+```
+
 ## 项目心得
 
 **React-router**：React-router的v4版本相较于之前的v2及v3版本有了较大幅度的更新，api的变动很大，新版的router也是组件化一部分，组件化的思想更深入了，具体api改动请查阅官方说明
