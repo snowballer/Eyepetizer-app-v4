@@ -8,31 +8,45 @@
 （与官网效果一致）
 
 ## 构建工具
+
 **create-react-app**
 
 ## 技术栈
 
 - **React**：React框架
-- **React-router**：React路由
+- **React-router4**：React路由
 - **Redux**：React状态管理工具
 - **styled-component**：组织React组件样式
 - **redux-saga**：中间件
 - **axios**：http请求
 
-## 指南
+## 启动项目
+``` bash
+#git clone
+https://github.com/snowballer/Eyepetizer-app-v4.git
 
-**框架选型**：在构建本网站之初，考虑过选用React或Vue来构建，毕竟本网站存在部分可复用的类组件结构。但本网站并不复杂，引用js框架带来的过多依赖会导致网站性能下降，并且本网站涉及的DOM操作较多，为了方便以后的迭代，最终选用jQuery库
+# install create-react-app
+npm install -g create-react-app
 
-**样式重置**：CSS Reset 把浏览器默认样式完全清空，但部分默认样式有其存在的合理之处。相对而言，normalize在确保各浏览器的默认样式的一致性情况下，保存了部分有其存在必要的默认样式。本网站选用normalize重置样式
+# install dependencies
+npm install
 
-**图标字体**：Font Awesome非常好用，但只能整体下载，尝试下载后发现体积过大，对于本网站来说过于笨重，而且本网站引用图标字体不多，最终选用阿里的Iconfont
+# serve with hot reload at localhost:3000
+npm start
 
-**响应适配**：本网站针对移动端和pc端做了两套方案，具体差别可以在手机端和电脑端分别访问本网站来体验。网站多端切换通过媒体查询来实现，为了保证各手机显示的一致性，样式采用rem改写。具体适配方案，可以在query.css查看
+# build for production with minification
+npm run build
 
-**网站性能**：移动端相对pc端性能较差，移动端方案进行了降级。为了保证移动端的体验，多处图片和特效进行了改动。正由于pc端和移动端不同，首次加载时请求图片数量增加，网站加载时间过长。尝试引入PxLoader实现了按需加载，网站加载时间稍微缓解，体验依旧不好。经过debug分析，图片是加载延迟核心问题，对图片进行了压缩并采用cdn，网站加载问题解决
+```
 
-## 结语
+## 项目心得
 
-感谢七牛云提供的cdn支持
+**React-router**：React-router的v4版本相较于之前的v2及v3版本有了较大幅度的更新，api的变动很大，新版的router也是组件化一部分，组件化的思想更深入了，具体api改动请查阅官方说明
 
-感谢bootstrap和codepen提供的灵感
+**Redux**：Redux的自顶而下的单一数据流非常清晰，在Redux Devtools中调试时可以准确地追踪和时间旅行，配合react-redux在react应用中也能方便的实现，不过action-dispatch-reducer-middleware流程比较繁琐，最近在考虑用mobx来进行管理数据，毕竟应用不复杂时，可以不用上redux
+
+**styled-component**：css采用styled-component库实现，相较于传统的css写法，此种写法class类名自动随机生成，更有效地避免了classname命名管理混乱的状态，而且该库把css跟组件相结合，更符合组件化的思想
+
+**redux-saga**：middleware采用的redux-saga，相较于redux-thunk，利用generator特性，能够非常方便地处理复杂异步问题
+
+**React**：React组件颗粒度更高，虽然方便了复用，但也带来了文件管理问题，在项目中要尽量把共用模块分离出来，以便方便维护和管理。React的理念一切皆js，一切组件，在这个项目里得到很好的反应，无论是redux、css in js还是router都是组件的一部分，同时又全部来源于js，在数据管理上路由状态也是redux的一部分，因此在风格统一和数据管理上，React的确做得很好
