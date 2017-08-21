@@ -1,5 +1,3 @@
-<img src="http://static.kaiyanapp.com/eyepetizer-web/assets/images/index/sprite/icon.8b17fd64.png" alt="logo" height="120" align="right" />
-
 # 开眼视频官网
 
 >依赖React技术栈构建的开眼视频官网
