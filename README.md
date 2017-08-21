@@ -19,6 +19,7 @@
 - **styled-component**：组织React组件样式
 - **redux-saga**：中间件
 - **axios**：http请求
+- **fastclick**：去除移动端点击延迟
 
 ## 启动项目
 ``` bash
@@ -37,6 +38,32 @@ npm start
 # build for production with minification
 npm run build
 
+```
+
+## 疑难解析
+
+**跨域问题**：项目中遇到了跨域问题，参阅了create-react-app官方github上的跨域解决方法，在package.json添加proxy，成功解决
+
+```json
+{
+  "name": "eyepetizer-app",
+  "version": "0.1.0",
+  "private": true,
+  "proxy":"http://baobab.kaiyanapp.com"
+}
+```
+
+**组件更新**：针对不同路由路径下同一组件的如何更新问题困扰了很久，在简书、segmentfault及stackoverflow进行了搜索和询问，查阅了组件更新的控制方式，componentWillReceiveProps虽然能通过比较两次props的不同进行更新，但会造成redux的action混乱的问题，最终查阅虚拟DOM的组件key的底层原理，给组件加上唯一值key解决了问题，加深了对虚拟DOM的组件key的理解
+
+```javascript
+const FinalDetail = connect(
+  ({ playVideoInfo, videoListInfo, replyListInfo }) =>
+  ({ playVideoInfo, videoListInfo, replyListInfo }),actions
+)(Detail);
+
+export default function (props) {
+  return (<FinalDetail {...props} key={props.match.url} />);
+}
 ```
 
 ## 项目心得
