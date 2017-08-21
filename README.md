@@ -77,3 +77,7 @@ export default function (props) {
 **redux-saga**：middleware采用的redux-saga，相较于redux-thunk，利用generator特性，能够非常方便地处理复杂异步问题
 
 **React**：React组件颗粒度更高，虽然方便了复用，但也带来了文件管理问题，在项目中要尽量把共用模块分离出来，以便方便维护和管理。React的理念一切皆js，一切组件，在这个项目里得到很好的反应，无论是redux、css in js还是router都是组件的一部分，同时又全部来源于js，在数据管理上路由状态也是redux的一部分，因此在风格统一和数据管理上，React的确做得很好
+
+## 声明
+
+开眼视频是一款精品短视频日报应用，此应用仅作学习交流之用，数据来源于开眼视频，数据接口来源于网路，请勿用于商业用途，原作公司拥有所有权利。
