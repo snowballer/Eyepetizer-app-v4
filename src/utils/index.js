@@ -1,4 +1,4 @@
-// @flow
+// 引入moment
 import moment from 'moment'
 // 格式化时间为1'55格式
 export function dateFormatter (milliseconds){
