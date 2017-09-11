@@ -18,6 +18,7 @@ export function createRootReducer() {
   })
 }
 
+//代码分离
 export function injectReducer(key, reducer) {
   asyncReducers[key] = reducer;
   store.replaceReducer(createRootReducer())
